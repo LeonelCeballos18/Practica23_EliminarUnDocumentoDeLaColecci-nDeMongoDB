@@ -48,4 +48,10 @@ router.post('/updateUser', (req, res) => {
     .catch((error) => {res.json({message:error})}); 
 });
 
+router.get('/deleteUser/:id', (req, res) => {
+    User.findByIdAndDelete(req.params.id)
+    .then((data) => {res.redirect('/users')})
+    .catch((error) => {res.json({message:error})});
+});
+
 module.exports = router;
